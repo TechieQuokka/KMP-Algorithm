@@ -33,23 +33,27 @@ KMP 알고리즘은 1977년 Knuth, Morris, Pratt가 개발한 효율적인 문�
 ## 특징
 
 ### 🚀 성능
+
 - 이론적 최적 시간 복잡도 O(n+m) 달성
 - 브루트 포스 알고리즘 대비 평균 10-15배 성능 향상
 - 캐시 친화적인 메모리 접근 패턴
 
 ### 🔒 안전성
+
 - ASCII 문자열만 지원하여 인코딩 문제 방지
 - 포괄적인 입력 검증
 - 메모리 누수 방지를 위한 안전한 메모리 관리
 - Valgrind와 AddressSanitizer 검증 완료
 
 ### 🛠 사용성
+
 - 간단하고 직관적인 API
 - 상세한 문서화
 - 포괄적인 테스트 스위트
 - 실제 사용 예제 제공
 
 ### 📊 분석 도구
+
 - 성능 벤치마크 도구 내장
 - 메모리 사용량 분석 기능
 - LPS 테이블 시각화
@@ -62,6 +66,7 @@ KMP 알고리즘은 1977년 Knuth, Morris, Pratt가 개발한 효율적인 문�
 - **RAM**: 최소 1MB (패턴 길이에 비례)
 
 ### 선택사항
+
 - **Valgrind**: 메모리 검사용
 - **Doxygen**: 문서 생성용
 - **cppcheck**: 정적 분석용
@@ -70,12 +75,14 @@ KMP 알고리즘은 1977년 Knuth, Morris, Pratt가 개발한 효율적인 문�
 ## 설치 및 빌드
 
 ### 1. 저장소 클론
+
 ```bash
 git clone https://github.com/username/kmp-algorithm.git
 cd kmp-algorithm
 ```
 
 ### 2. 기본 빌드
+
 ```bash
 make
 ```
@@ -83,26 +90,31 @@ make
 ### 3. 빌드 옵션
 
 #### 디버그 빌드
+
 ```bash
 make debug
 ```
 
 #### 메모리 안전성 검사 빌드
+
 ```bash
 make sanitize
 ```
 
 #### 프로파일링 빌드
+
 ```bash
 make profile
 ```
 
 #### 커버리지 분석
+
 ```bash
 make coverage
 ```
 
 ### 4. 모든 타겟 확인
+
 ```bash
 make help
 ```
@@ -110,6 +122,7 @@ make help
 ## 사용법
 
 ### 기본 사용
+
 ```bash
 # 데모 실행
 ./kmp_demo
@@ -122,6 +135,7 @@ make help
 ```
 
 ### 테스트 실행
+
 ```bash
 # 단위 테스트
 make test
@@ -134,6 +148,7 @@ make valgrind
 ```
 
 ### 시스템 설치
+
 ```bash
 # /usr/local/bin에 설치
 sudo make install
@@ -159,6 +174,7 @@ typedef struct {
 ### 주요 함수
 
 #### 매처 생성/소멸
+
 ```c
 // 매처 생성
 KMPMatcher* kmp_create(const char* pattern);
@@ -168,6 +184,7 @@ void kmp_destroy(KMPMatcher* matcher);
 ```
 
 #### 검색 함수
+
 ```c
 // 첫 번째 매칭 위치 반환
 int kmp_search(KMPMatcher* matcher, const char* text);
@@ -180,6 +197,7 @@ SearchResult* kmp_search_with_stats(KMPMatcher* matcher, const char* text);
 ```
 
 #### 유틸리티 함수
+
 ```c
 // 매처 정보 출력
 void kmp_print_stats(const KMPMatcher* matcher);
@@ -207,18 +225,18 @@ typedef enum {
 
 ### 시간 복잡도 비교
 
-| 알고리즘 | 전처리 | 검색 | 전체 | 최악의 경우 |
-|---------|-------|------|------|------------|
-| 브루트 포스 | O(1) | O(nm) | O(nm) | O(nm) |
-| **KMP** | **O(m)** | **O(n)** | **O(n+m)** | **O(n+m)** |
+| 알고리즘    | 전처리   | 검색     | 전체       | 최악의 경우 |
+| ----------- | -------- | -------- | ---------- | ----------- |
+| 브루트 포스 | O(1)     | O(nm)    | O(nm)      | O(nm)       |
+| **KMP**     | **O(m)** | **O(n)** | **O(n+m)** | **O(n+m)**  |
 
 ### 실제 성능 측정 (Intel i7-9700K, GCC -O2)
 
 | 텍스트 크기 | 패턴 크기 | KMP (ms) | 브루트 포스 (ms) | 개선비 |
-|------------|----------|----------|-----------------|--------|
-| 100,000    | 10       | 1.2      | 14.8           | 12.3x  |
-| 1,000,000  | 100      | 12.1     | 148.0          | 12.2x  |
-| 10,000,000 | 1,000    | 121.0    | 1,480.0        | 12.2x  |
+| ----------- | --------- | -------- | ---------------- | ------ |
+| 100,000     | 10        | 1.2      | 14.8             | 12.3x  |
+| 1,000,000   | 100       | 12.1     | 148.0            | 12.2x  |
+| 10,000,000  | 1,000     | 121.0    | 1,480.0          | 12.2x  |
 
 ### 메모리 사용량
 
@@ -230,6 +248,7 @@ typedef enum {
 ## 테스트
 
 ### 테스트 범위
+
 - ✅ LPS 테이블 계산 정확성
 - ✅ 기본 문자열 매칭
 - ✅ 다중 매칭 검색
@@ -239,6 +258,7 @@ typedef enum {
 - ✅ 에러 처리
 
 ### 테스트 실행
+
 ```bash
 # 모든 단위 테스트 실행
 make test
@@ -251,6 +271,7 @@ make valgrind
 ```
 
 ### 예상 결과
+
 ```
 KMP Algorithm Unit Tests
 ========================
@@ -439,12 +460,6 @@ make sanitize
 ## 라이선스
 
 이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참고하세요.
-
-## 작성자
-
-- **이름**: [작성자명]
-- **이메일**: [이메일주소]
-- **GitHub**: [GitHub 프로필]
 
 ## 감사의 글
 
