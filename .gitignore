@@ -1,0 +1,76 @@
+# Build artifacts
+obj/
+*.o
+*.so
+*.a
+*.dylib
+*.dll
+
+# Executables
+kmp_demo
+test_kmp
+benchmark
+kmp_demo.exe
+test_kmp.exe
+benchmark.exe
+
+# Debug and profiling files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+gmon.out
+profile.txt
+
+# Coverage files
+*.gcov
+*.gcda
+*.gcno
+coverage.info
+coverage/
+
+# Temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.vcxproj*
+*.sln
+
+# Documentation generated files
+docs/html/
+docs/latex/
+html/
+latex/
+
+# Core dumps
+core
+core.*
+vgcore.*
+
+# Backup files
+*.bak
+*.orig
+
+# Autotools
+autom4te.cache/
+config.log
+config.status
+configure
+Makefile.in
+aclocal.m4
+
+# CMake
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Package manager
+node_modules/
+package-lock.json
